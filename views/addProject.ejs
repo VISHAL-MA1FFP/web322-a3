@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Project</title>
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+
+<%- include('partials/navbar') %>
+
+<div class="container mx-auto p-8">
+  <h1 class="text-3xl font-bold mb-4">Add Project</h1>
+
+  <form action="/solutions/addProject" method="POST" class="space-y-3">
+
+    <input name="title" required placeholder="Title" class="input input-bordered w-full" />
+
+    <input name="feature_img_url" required placeholder="Image URL" class="input input-bordered w-full" />
+
+    <select name="sector_id" required class="select select-bordered w-full">
+      <option value="">Select Sector</option>
+      <% sectors.forEach(s => { %>
+        <option value="<%= s.id %>"><%= s.sector_name %></option>
+      <% }) %>
+    </select>
+
+    <textarea name="intro_short" required placeholder="Intro" class="textarea textarea-bordered w-full"></textarea>
+
+    <textarea name="summary_short" required placeholder="Summary" class="textarea textarea-bordered w-full"></textarea>
+
+    <textarea name="impact" required placeholder="Impact" class="textarea textarea-bordered w-full"></textarea>
+
+    <input name="original_source_url" required placeholder="Source URL" class="input input-bordered w-full" />
+
+    <button class="btn btn-success">Add Project</button>
+  </form>
+</div>
+
+</body>
+</html>

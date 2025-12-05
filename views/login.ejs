@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+
+<%- include('partials/navbar') %>
+
+<div class="container mx-auto p-8 max-w-md">
+  <h1 class="text-3xl font-bold mb-6">Admin Login</h1>
+
+  <form action="/login" method="POST" class="space-y-3">
+
+    <input name="userName" required placeholder="User Name"
+           value="<%= typeof userName !== 'undefined' ? userName : '' %>"
+           class="input input-bordered w-full" />
+
+    <input type="password" name="password" required placeholder="Password"
+           class="input input-bordered w-full" />
+
+    <% if (errorMessage) { %>
+      <div class="alert alert-error"><%= errorMessage %></div>
+    <% } %>
+
+    <button class="btn btn-primary w-full">Login</button>
+  </form>
+</div>
+
+</body>
+</html>

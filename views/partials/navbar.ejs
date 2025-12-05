@@ -1,0 +1,34 @@
+<nav class="navbar bg-base-200 shadow-md mb-6">
+  <div class="flex-1">
+    <a href="/" class="btn btn-ghost normal-case text-xl">Climate Solutions</a>
+  </div>
+
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+
+      <li><a href="/" class="<%= page === '/' ? 'active font-bold' : '' %>">Home</a></li>
+      <li><a href="/about" class="<%= page === '/about' ? 'active font-bold' : '' %>">About</a></li>
+
+      <li tabindex="0">
+        <details>
+          <summary>Sector</summary>
+          <ul class="p-2 bg-base-100 rounded-t-none">
+            <% (sectors || []).forEach(s => { %>
+              <li><a href="/solutions/projects?sector=<%= s.id %>"><%= s.sector_name %></a></li>
+            <% }) %>
+          </ul>
+        </details>
+      </li>
+
+      <li><a href="/solutions/projects" class="<%= page === '/projects' ? 'active font-bold' : '' %>">Projects</a></li>
+
+      <% if (session.user) { %>
+        <li><a href="/solutions/addProject">Add Project</a></li>
+        <li><a href="/logout">Logout (<%= session.user.userName %>)</a></li>
+      <% } else { %>
+        <li><a href="/login" class="<%= page === '/login' ? 'active font-bold' : '' %>">Login</a></li>
+      <% } %>
+
+    </ul>
+  </div>
+</nav>
